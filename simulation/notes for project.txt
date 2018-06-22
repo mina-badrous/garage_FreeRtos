@@ -1,0 +1,31 @@
+DEFAULT USER password : 0000   >>> for first time setup the system
+--------------------------------------------------------------------------------------------------
+on the terminal if entered the admin password 3 times wrong
+the terminal will locked and ask for the root password
+if the root password entered 3 times wrong the terminal will lock 
+and must call the developper to unlock the system with spi 
+device by sending 4 char to the avr 
+the spi unlock pattern : 'm' 'i' 'n' 'a'
+--------------------------------------------------------------------------------------------------
+EEPROM memory layout
+-----------------------------------
+address(0x) 		data			              brief	
+0		FIRST_TIME_SETUP_SYSTEM_FLAG >> if = magic number 0xAA then the system has been setup else setup the system
+1		CURRENT_USER_CONTROL_BLOCK    pointer to which control block used by the system range 1 : 13 
+2                             	CURRENT_USER_CONTROL_BLOCK  duplicated for avoiding read and write error as checksum the value must be read from the 2 location
+3		SYSTEM_LOCK_FLAG	             for check if the system was locked before 
+4 - 7                                  RESERVED
+8 - 0F		first USER_control_block   >> 8 byte struct { u32 current_user_of_system_flags,u16 write_count,u8 checksum,u8 dummy}
+					every write to this control block the write_count var increment and check if < 0xFFFE 
+					if bigger then copy the curent block to the next block and increment the CURRENT_USER_CONTROL_BLOCK
+					current_user_of_system_flags : every bit represent user in the system if equel 1  from bit 0 to bit 24 as only max 25 user
+10 - 17		second USER_control_block
+18 - 1F 		third USER_control_block
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+68 - 6F                        13 USER_control_block
+.............
+70 -7F              	first user 			>>> struct of 16 byte { name[10] , pass[4], user_type,checksum}
+80 -8F              	second user 			>>> struct of 16 byte { name[10] , pass[4], user_type,checksum}
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+190:19F                         user # 25
+-----------------------------------------------------------------------------------------------------------------------------------------

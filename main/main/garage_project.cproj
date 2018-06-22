@@ -1,0 +1,384 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>6.1</ProjectVersion>
+    <ToolchainName>com.Atmel.AVRGCC8.C</ToolchainName>
+    <ProjectGuid>{b925f594-f15d-46d6-b503-5871ad6767c3}</ProjectGuid>
+    <avrdevice>ATmega32</avrdevice>
+    <avrdeviceseries>none</avrdeviceseries>
+    <OutputType>Executable</OutputType>
+    <Language>C</Language>
+    <OutputFileName>$(MSBuildProjectName)</OutputFileName>
+    <OutputFileExtension>.elf</OutputFileExtension>
+    <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
+    <AssemblyName>main</AssemblyName>
+    <Name>garage_project</Name>
+    <RootNamespace>main</RootNamespace>
+    <ToolchainFlavour>Native</ToolchainFlavour>
+    <KeepTimersRunning>true</KeepTimersRunning>
+    <OverrideVtor>false</OverrideVtor>
+    <OverrideVtorValue>
+    </OverrideVtorValue>
+    <eraseonlaunchrule>0</eraseonlaunchrule>
+    <ProgFlashFromRam>true</ProgFlashFromRam>
+    <RamSnippetAddress>0x20000000</RamSnippetAddress>
+    <CacheFlash>true</CacheFlash>
+    <UncachedRange />
+    <BootSegment>0</BootSegment>
+    <AsfFrameworkConfig>
+      <framework-data xmlns="">
+        <options />
+        <configurations />
+        <files />
+        <documentation help="" />
+        <dependencies>
+          <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.7.2" />
+        </dependencies>
+      </framework-data>
+    </AsfFrameworkConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <ToolchainSettings>
+      <AvrGcc>
+        <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
+        <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
+        <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
+        <avrgcc.common.outputfiles.srec>True</avrgcc.common.outputfiles.srec>
+        <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
+        <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
+        <avrgcc.compiler.symbols.DefSymbols>
+          <ListValues>
+            <Value>NDEBUG</Value>
+          </ListValues>
+        </avrgcc.compiler.symbols.DefSymbols>
+        <avrgcc.compiler.optimization.level>Optimize for size (-Os)</avrgcc.compiler.optimization.level>
+        <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
+        <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
+        <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+        <avrgcc.linker.libraries.Libraries>
+          <ListValues>
+            <Value>libm</Value>
+          </ListValues>
+        </avrgcc.linker.libraries.Libraries>
+      </AvrGcc>
+    </ToolchainSettings>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <ToolchainSettings>
+      <AvrGcc>
+        <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
+        <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
+        <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
+        <avrgcc.common.outputfiles.srec>True</avrgcc.common.outputfiles.srec>
+        <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
+        <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
+        <avrgcc.compiler.symbols.DefSymbols>
+          <ListValues>
+            <Value>DEBUG</Value>
+          </ListValues>
+        </avrgcc.compiler.symbols.DefSymbols>
+        <avrgcc.compiler.directories.IncludePaths>
+          <ListValues>
+            <Value>../SERVICE/include</Value>
+            <Value>../MCAL/include</Value>
+            <Value>../ECU/include</Value>
+            <Value>../APP/include</Value>
+          </ListValues>
+        </avrgcc.compiler.directories.IncludePaths>
+        <avrgcc.compiler.optimization.level>Optimize (-O1)</avrgcc.compiler.optimization.level>
+        <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
+        <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
+        <avrgcc.compiler.optimization.DebugLevel>Default (-g2)</avrgcc.compiler.optimization.DebugLevel>
+        <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+        <avrgcc.linker.libraries.Libraries>
+          <ListValues>
+            <Value>libm</Value>
+          </ListValues>
+        </avrgcc.linker.libraries.Libraries>
+        <avrgcc.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcc.assembler.debugging.DebugLevel>
+      </AvrGcc>
+    </ToolchainSettings>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="APP\include\bitwise.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APP\include\FreeRTOSConfig.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APP\include\int.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APP\include\keypad_task.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APP\include\lcd_task.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APP\include\led_task.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APP\include\log_task.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APP\include\main.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APP\include\motor_task.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APP\include\spi_interrupt.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APP\include\terminal_main_menu.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APP\include\terminal_task.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APP\include\terminal_user_menu.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APP\src\keypad_task.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APP\src\lcd_task.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APP\src\led_task.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APP\src\log_task.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APP\src\main.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APP\src\motor_task.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APP\src\spi_interrupt.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APP\src\terminal_main_menu.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APP\src\terminal_task.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APP\src\terminal_user_menu.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ECU\include\ecu_buzzer.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ECU\include\ecu_buzzer_Cfg.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ECU\include\ecu_keypad.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ECU\include\ecu_keypad_Cfg.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ECU\include\ecu_lcd.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ECU\include\ecu_lcd_Cfg.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ECU\include\ecu_led.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ECU\include\ecu_led_Cfg.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ECU\include\external_eeprom.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ECU\include\motor_driver.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ECU\include\motor_driver_Cfg.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ECU\include\rtc.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ECU\src\ecu_buzzer.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ECU\src\ecu_buzzer_Cfg.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ECU\src\ecu_keypad.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ECU\src\ecu_keypad_Cfg.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ECU\src\ecu_lcd.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ECU\src\ecu_lcd_Cfg.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ECU\src\ecu_led.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ECU\src\ecu_led_Cfg.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ECU\src\external_eeprom.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ECU\src\motor_driver.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ECU\src\motor_driver_Cfg.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ECU\src\rtc.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\include\gpio.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\include\i2c.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\include\i2c_Cfg.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\include\pwm2.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\include\pwm2_Cfg.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\include\spi.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\include\spi_Cfg.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\include\uart.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\include\uart_Cfg.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\src\gpio.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\src\i2c.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\src\i2c_Cfg.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\src\pwm2.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\src\pwm2_Cfg.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\src\spi.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\src\spi_Cfg.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\src\uart.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\src\uart_Cfg.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SERVICE\include\croutine.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SERVICE\include\deprecated_definitions.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SERVICE\include\event_groups.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SERVICE\include\FreeRTOS.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SERVICE\include\list.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SERVICE\include\message_buffer.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SERVICE\include\mpu_prototypes.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SERVICE\include\mpu_wrappers.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SERVICE\include\portable.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SERVICE\include\portmacro.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SERVICE\include\projdefs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SERVICE\include\queue.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SERVICE\include\semphr.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SERVICE\include\StackMacros.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SERVICE\include\stack_macros.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SERVICE\include\stream_buffer.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SERVICE\include\task.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SERVICE\include\timers.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SERVICE\src\heap_1.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SERVICE\src\list.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SERVICE\src\port.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SERVICE\src\queue.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SERVICE\src\tasks.c">
+      <SubType>compile</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="APP\" />
+    <Folder Include="APP\include\" />
+    <Folder Include="APP\src\" />
+    <Folder Include="ECU\" />
+    <Folder Include="ECU\include\" />
+    <Folder Include="ECU\src\" />
+    <Folder Include="MCAL\" />
+    <Folder Include="MCAL\include\" />
+    <Folder Include="MCAL\src\" />
+    <Folder Include="SERVICE\" />
+    <Folder Include="SERVICE\include\" />
+    <Folder Include="SERVICE\src\" />
+  </ItemGroup>
+  <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
+</Project>
