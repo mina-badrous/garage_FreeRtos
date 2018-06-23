@@ -1,8 +1,10 @@
-# garage_FreeRtos
+# Garage_FreeRtos
 Garage System using FreeRtos
 ============================
 
 DEFAULT USER password : 0000   >>> for first time setup the system
+
+To enter terminal press @ key 
 --------------------------------------------------------------------------------------------------
 on the terminal if entered the admin password 3 times wrong
 the terminal will locked and ask for the root password
